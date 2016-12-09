@@ -13,11 +13,11 @@
 		<script type="text/javascript" src="/js/blog-posts.js"></script>
 		<script type="text/javascript" src="/js/script.js"></script>
 	</head>
-	<body>
+	<body ng-app="displayPosts">
 		
 		<header>
 			
-			<nav class="navbar navbar-inverse">
+			<nav class="navbar navbar-inverse navbar-fixed-top">
 				<div class="container-fluid">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -30,24 +30,24 @@
 					<div class="collapse navbar-collapse" id="myNavbar">
 						<ul class="nav navbar-nav">
 							<li class="active"><a href="/">Home</a></li>
-							<li><a href="/">Posts</a></li>
+							<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Posts<span class="caret"></span></a>
+								<ul class="dropdown-menu" ng-controller="myCtrl2">
+									<li><a ng-repeat="post in blogPosts" href="#{{ post.title }}">{{ post.title }}</a></li>
+								</ul>
+							</li>
 							<li id="img-right">
 								<a href="http://bronxsoftware.org"></a>
 							</li>
 						</ul>
 					</div>
-					<!--
-					
-					<img width="45px" height="45px" href="/img/base_45x45.png" style="float: right; vertical-align: initial; display: block" />
-					
-					-->
 				</div>
 			</nav>
 			
 			<div class="jumbotron">
 				<div class="container">
 					<h1 id="title">The Virus Blog</h1>
-					<h3 id="subtitle">A blog about viruses</h3>
+					<h3 id="subtitle">A blog about computer viruses</h3>
 				</div>
 			</div>
 			
@@ -55,7 +55,7 @@
 		
 		<section>
 			
-			<div class="row" ng-app="displayPosts">
+			<div class="row">
 				
 				<article>
 					<div class="col-sm-9">
